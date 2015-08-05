@@ -18,9 +18,10 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 
 	private Coordinador miCoordinador; //objeto miCoordinador que permite la relacion entre esta clase y la clase coordinador
 	private JLabel labelTitulo;
-	private JTextField textCod,textNombre,textEdad,textTelefono,textProfesion;
-	private JLabel cod,nombre,edad,telefono,profesion;
+	private JTextField textCod,textNombre,textEdad,textTelefono,textProfesion,textCiudad,textApellido;
+	private JLabel cod,nombre,edad,telefono,profesion,apellido,ciudad;
 	private JButton botonGuardar,botonCancelar,botonBuscar,botonModificar,botonEliminar;
+	private JTextField textField;
 	
 	/**
 	 * constructor de la clase donde se inicializan todos los componentes
@@ -29,11 +30,11 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 	public VentanaBuscar() {
 
 		botonGuardar = new JButton();
-		botonGuardar.setBounds(50, 220, 120, 25);
+		botonGuardar.setBounds(60, 250, 120, 25);
 		botonGuardar.setText("Guardar");
 		
 		botonCancelar = new JButton();
-		botonCancelar.setBounds(190, 250, 120, 25);
+		botonCancelar.setBounds(190, 295, 120, 25);
 		botonCancelar.setText("Cancelar");
 		
 		botonBuscar = new JButton();
@@ -41,11 +42,11 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 		botonBuscar.setText("Ok");
 		
 		botonEliminar = new JButton();
-		botonEliminar.setBounds(330, 220, 120, 25);
+		botonEliminar.setBounds(333, 250, 120, 25);
 		botonEliminar.setText("Eliminar");
 		
 		botonModificar = new JButton();
-		botonModificar.setBounds(190, 220, 120, 25);
+		botonModificar.setBounds(190, 250, 120, 25);
 		botonModificar.setText("Modificar");
 
 		labelTitulo = new JLabel();
@@ -56,47 +57,66 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 		cod=new JLabel();
 		cod.setText("Codigo");
 		cod.setBounds(20, 80, 80, 25);
-		add(cod);
+		getContentPane().add(cod);
 		
 		nombre=new JLabel();
 		nombre.setText("Nombre");
 		nombre.setBounds(20, 120, 80, 25);
-		add(nombre);
+		getContentPane().add(nombre);
+		
+		apellido= new JLabel();
+		apellido.setText("Apellido");
+		apellido.setBounds(20, 196, 80, 25);
+		getContentPane().add(apellido);
 
 		telefono=new JLabel();
 		telefono.setText("telefono");
 		telefono.setBounds(290, 160, 80, 25);
-		add(telefono);
+		getContentPane().add(telefono);
 		
 		profesion=new JLabel();
 		profesion.setText("profesion");
 		profesion.setBounds(20, 160, 80, 25);
-		add(profesion);
+		getContentPane().add(profesion);
 		
 		edad=new JLabel();
 		edad.setText("Edad");
 		edad.setBounds(290, 120, 80, 25);
-		add(edad);
+		getContentPane().add(edad);
+		
+		
+		
+		
 		
 		textCod=new JTextField();
 		textCod.setBounds(80, 80, 80, 25);
-		add(textCod);
+		getContentPane().add(textCod);
 		
 		textNombre=new JTextField();
 		textNombre.setBounds(80, 120, 190, 25);
-		add(textNombre);
+		getContentPane().add(textNombre);
 
 		textTelefono=new JTextField();
 		textTelefono.setBounds(340, 160, 80, 25);
-		add(textTelefono);
+		getContentPane().add(textTelefono);
 		
 		textProfesion=new JTextField();
 		textProfesion.setBounds(80, 160, 190, 25);
-		add(textProfesion);
+		getContentPane().add(textProfesion);
 		
 		textEdad=new JTextField();
 		textEdad.setBounds(340, 120, 80, 25);
-		add(textEdad);
+		getContentPane().add(textEdad);
+		
+		
+		
+		textApellido=new JTextField();
+		textApellido.setBounds(80	,196, 190, 25);
+		getContentPane().add(textApellido);
+		
+		textCiudad=new JTextField();
+		textCiudad.setBounds(340	,196, 80, 25);
+		getContentPane().add(textCiudad);
 		
 		botonModificar.addActionListener(this);
 		botonEliminar.addActionListener(this);
@@ -104,19 +124,25 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 		botonGuardar.addActionListener(this);
 		botonCancelar.addActionListener(this);
 
-		add(botonCancelar);
-		add(botonBuscar);
-		add(botonModificar);
-		add(botonEliminar);
-		add(botonGuardar);
-		add(labelTitulo);
+		getContentPane().add(botonCancelar);
+		getContentPane().add(botonBuscar);
+		getContentPane().add(botonModificar);
+		getContentPane().add(botonEliminar);
+		getContentPane().add(botonGuardar);
+		getContentPane().add(labelTitulo);
 		limpiar();
 				
-		setSize(480, 320);
+		setSize(480, 420);
 		setTitle("CoDejaVu : Patrones de Diseño/MVC");
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setLayout(null);
+		getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Ciudad");
+		lblNewLabel.setBounds(284, 201, 46, 14);
+		getContentPane().add(lblNewLabel);
+		
+		
 
 	}
 
@@ -138,11 +164,13 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 				miPersona.setTelefonoPersona(Integer.parseInt(textTelefono.getText()));
 				miPersona.setEdadPersona(Integer.parseInt(textEdad.getText()));
 				miPersona.setProfesionPersona(textProfesion.getText());
-
+				miPersona.setApellidoPersona(textApellido.getText());
+				miPersona.setCiudadPersona(textCiudad.getText());
+				
 				miCoordinador.modificarPersona(miPersona);
 				
 				if (Logica.modificaPersona==true) {
-					habilita(true, false, false, false, false, true, false, true, true);	
+					habilita(false, true,true, true, true, true, false,false, true, false, false);	
 				}
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null,"Error en el Ingreso de Datos","Error",JOptionPane.ERROR_MESSAGE);
@@ -164,7 +192,7 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 		
 		if (e.getSource()==botonModificar)
 		{
-			habilita(false, true, true, true, true, false, true, false, false);
+			habilita(false, true,true, true, true, true, false,false, true, false, false);
 			
 		}
 		
@@ -201,10 +229,12 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 	 */
 	private void muestraPersona(PersonaVo miPersona) {
 		textNombre.setText(miPersona.getNombrePersona());
+		textApellido.setText(miPersona.getApellidoPersona());
 		textEdad.setText(miPersona.getEdadPersona()+"");
 		textTelefono.setText(miPersona.getTelefonoPersona()+"");
 		textProfesion.setText(miPersona.getProfesionPersona());
-		habilita(true, false, false, false, false, true, false, true, true);
+		textCiudad.setText(miPersona.getCiudadPersona());
+		habilita(true, false,false, false, false, false, true,true, false, true, true);
 	}
 
 
@@ -215,10 +245,12 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 	{
 		textCod.setText("");
 		textNombre.setText("");
+		textApellido.setText("");
 		textEdad.setText("");
 		textTelefono.setText("");
 		textProfesion.setText("");
-		habilita(true, false, false, false, false, true, false, true, true);
+		textCiudad.setText("");
+		habilita(true, false,false, false, false, false, true,true, false, true, true);
 	}
 
 
@@ -235,13 +267,15 @@ public class VentanaBuscar  extends JFrame implements ActionListener {
 	 * @param bModificar
 	 * @param bEliminar
 	 */
-	public void habilita(boolean codigo, boolean nombre, boolean edad, boolean tel, boolean profesion,	 boolean bBuscar, boolean bGuardar, boolean bModificar, boolean bEliminar)
+	public void habilita(boolean codigo, boolean nombre, boolean apellido, boolean edad, boolean tel, boolean profesion, boolean ciudad,	 boolean bBuscar, boolean bGuardar, boolean bModificar, boolean bEliminar)
 	{
 		textCod.setEditable(codigo);
 		textNombre.setEditable(nombre);
+		textApellido.setEditable(apellido);
 		textEdad.setEditable(edad);
 		textTelefono.setEditable(tel);
 		textProfesion.setEditable(profesion);
+		textCiudad.setEditable(false);
 		botonBuscar.setEnabled(bBuscar);
 		botonGuardar.setEnabled(bGuardar);
 		botonModificar.setEnabled(bModificar);

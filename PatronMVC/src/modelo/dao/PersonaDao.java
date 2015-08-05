@@ -31,8 +31,10 @@ public class PersonaDao
 		try {
 			Statement estatuto = conex.getConnection().createStatement();
 			estatuto.executeUpdate("INSERT INTO persona VALUES ('"+miPersona.getIdPersona()+"', '"
-					+miPersona.getNombrePersona()+"', '"+miPersona.getEdadPersona()+"', '"
-					+miPersona.getProfesionPersona()+"', '"+miPersona.getTelefonoPersona()+"')");
+					+miPersona.getNombrePersona()+"','"
+					+miPersona.getApellidoPersona()+"', '"+miPersona.getEdadPersona()+"', '"
+					+miPersona.getProfesionPersona()+"', '"+miPersona.getTelefonoPersona()+"','"
+					+miPersona.getCiudadPersona()+"')");
 			JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
 			estatuto.close();
 			conex.desconectar();
@@ -57,9 +59,11 @@ public class PersonaDao
 				existe=true;
 				persona.setIdPersona(Integer.parseInt(res.getString("id")));
 				persona.setNombrePersona(res.getString("nombre"));
+				persona.setApellidoPersona(res.getString("apellido"));
 				persona.setEdadPersona(Integer.parseInt(res.getString("edad")));
 				persona.setProfesionPersona(res.getString("profesion"));
 				persona.setTelefonoPersona(Integer.parseInt(res.getString("telefono")));
+				persona.setCiudadPersona(res.getString("ciudad"));
 			 }
 			res.close();
 			conex.desconectar();
@@ -80,15 +84,17 @@ public class PersonaDao
 		
 		Conexion conex= new Conexion();
 		try{
-			String consulta="UPDATE persona SET id= ? ,nombre = ? , edad=? , profesion=? , telefono= ? WHERE id= ? ";
+			String consulta="UPDATE persona SET id= ? ,nombre = ? ,apellido=?, edad=? , profesion=? , telefono= ?, ciudad=? WHERE id= ? ";
 			PreparedStatement estatuto = conex.getConnection().prepareStatement(consulta);
 			
             estatuto.setInt(1, miPersona.getIdPersona());
             estatuto.setString(2, miPersona.getNombrePersona());
-            estatuto.setInt(3, miPersona.getEdadPersona());
-            estatuto.setString(4, miPersona.getProfesionPersona());
-            estatuto.setInt(5,miPersona.getTelefonoPersona());
-            estatuto.setInt(6, miPersona.getIdPersona());
+            estatuto.setString(3, miPersona.getApellidoPersona());
+            estatuto.setInt(4, miPersona.getEdadPersona());
+            estatuto.setString(5, miPersona.getProfesionPersona());
+            estatuto.setInt(6,miPersona.getTelefonoPersona());
+            estatuto.setString(7, miPersona.getCiudadPersona());
+            estatuto.setInt(8, miPersona.getIdPersona());
             estatuto.executeUpdate();
 
           JOptionPane.showMessageDialog(null, " Se ha Modificado Correctamente ","Confirmación",JOptionPane.INFORMATION_MESSAGE);

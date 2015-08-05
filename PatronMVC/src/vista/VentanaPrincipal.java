@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		botonBuscar.setText("Buscar");
 
 		labelTitulo = new JLabel();
-		labelTitulo.setText("PATRON MODELO VISTA CONTROLADOR");
+		labelTitulo.setText("CRUD CON MODELO VISTA CONTROLADOR");
 		labelTitulo.setBounds(60, 40, 380, 30);
 		labelTitulo.setFont(new java.awt.Font("Verdana", 1, 15));
 
@@ -47,10 +47,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		labelSeleccion.setText("Escoja que operacion desea realizar");
 		labelSeleccion.setBounds(75, 240, 250, 25);
 
-		textoIntroduccion = "Esta aplicación presenta un ejemplo práctico del patron "
+		textoIntroduccion = "Un ejemplo práctico del patron "
 				+ "de diseño MVC.\n\n"
-				+ "La aplicación permite registrar, actualizar, buscar y eliminar registros de una tabla Persona." +
-				"tambien son vinculados algunos conceptos de los Patrones Value Object y Data Access Objetc\n";
+				+ "permite registrar, actualizar, buscar y eliminar registros." +
+				"Conceptos de los Patrones Value Object y Data Access Objetc\n";
 
 		areaIntroduccion = new JTextArea();
 		areaIntroduccion.setBounds(50, 90, 380, 140);

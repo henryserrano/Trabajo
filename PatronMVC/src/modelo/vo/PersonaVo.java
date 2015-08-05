@@ -4,15 +4,30 @@ public class PersonaVo {
 	
 	private Integer idPersona;
 	private String nombrePersona;
+	private String apellidoPersona;
 	private Integer edadPersona;
 	private String profesionPersona;
+	
 	private Integer telefonoPersona;
+	private String ciudadPersona;
 	
 	/**
 	 * @return the idPersona
 	 */
 	public Integer getIdPersona() {
 		return idPersona;
+	}
+	public String getApellidoPersona() {
+		return apellidoPersona;
+	}
+	public void setApellidoPersona(String apellidoPersona) {
+		this.apellidoPersona = apellidoPersona;
+	}
+	public String getCiudadPersona() {
+		return ciudadPersona;
+	}
+	public void setCiudadPersona(String ciudadPersona) {
+		this.ciudadPersona = ciudadPersona;
 	}
 	/**
 	 * @param idPersona the idPersona to set
